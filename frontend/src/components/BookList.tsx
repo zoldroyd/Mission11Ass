@@ -19,7 +19,7 @@ function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
 
   const handleAddToCart = (b: Book) => {
     const newItem: CartItem = {
-      bookId: Number(b.bookId),
+      bookId: Number(b.bookID),
       title: String(b.title),
       author: String(b.author),
       quantity: 1,
@@ -40,6 +40,7 @@ function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
         `https://localhost:9999/Book/AllBooks?pageSize=${pageSize}&pageNum=${pageNum}&sortBy=title&sortOrder=${sortOrder || ''}${selectedCategories.length ? `&${categoryParams}` : ''}`
       );
       const data = await response.json();
+      console.log('Fetched books:', data.books);
       setBooks(data.books);
       setTotalItems(data.numBooks);
       setTotalPages(Math.ceil(totalItems / pageSize));
@@ -85,7 +86,7 @@ function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
       </label>
       <br />
       {books.map((b) => (
-        <div id="BookCard" className="card" key={b.bookId}>
+        <div id="BookCard" className="card" key={b.bookID}>
           <h3 className="card-title">{b.title}</h3>
           <div className="card-body">
             <ul className="list-unstyled">

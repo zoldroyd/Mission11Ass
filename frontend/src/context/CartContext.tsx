@@ -32,7 +32,6 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeFromCart = (bookId: number) => {
-    console.log('Removing book with ID:', bookId);
     setCart((prevCart) => prevCart.filter((c) => c.bookId !== bookId));
   };
 
