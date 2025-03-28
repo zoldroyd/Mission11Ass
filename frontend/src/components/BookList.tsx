@@ -1,6 +1,10 @@
 import { useState } from 'react';
-import { Book } from './types/Book';
+import { Book } from '../types/Book';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
+import { CartItem } from '../types/CartItem';
+// import { CartItem } from '../types/CartItem';
 
 function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
   const [books, setBooks] = useState<Book[]>([]);
@@ -9,6 +13,22 @@ function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
   const [totalItems, setTotalItems] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
   const [sortOrder, setSortOrder] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const { addToCart } = useCart();
+  // const { bookId, title, author, price } = useParams();
+
+  const handleAddToCart = (b: Book) => {
+    const newItem: CartItem = {
+      bookId: Number(b.bookId),
+      title: String(b.title),
+      author: String(b.author),
+      quantity: 1,
+      price: Number(b.price),
+      subtotal: Number(b.price),
+    };
+    addToCart(newItem);
+    navigate('/cart');
+  };
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -33,6 +53,16 @@ function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
     setPageNum(1); // Reset to page 1 when sorting
   };
 
+  useEffect(() => {
+    // Initialize Bootstrap tooltips
+    const tooltipTriggerList = [].slice.call(
+      document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    );
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new (window as any).bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  }, []); // Empty dependency array ensures it runs only once
+
   return (
     <>
       <label>
@@ -55,7 +85,7 @@ function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
       </label>
       <br />
       {books.map((b) => (
-        <div id="BookCard" className="card" key={b.bookID}>
+        <div id="BookCard" className="card" key={b.bookId}>
           <h3 className="card-title">{b.title}</h3>
           <div className="card-body">
             <ul className="list-unstyled">
@@ -91,6 +121,16 @@ function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
                 <strong>Price: </strong>${b.price}
               </li>
             </ul>
+
+            <button
+              className="btn btn-success"
+              onClick={() => handleAddToCart(b)}
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="THIS BOOK IS FIRE!"
+            >
+              Add to cart
+            </button>
           </div>
         </div>
       ))}
