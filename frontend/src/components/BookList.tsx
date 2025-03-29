@@ -1,4 +1,11 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+
+// Extend the Window interface to include the bootstrap property
+declare global {
+  interface Window {
+    bootstrap: any;
+  }
+}
 import { Book } from '../types/Book';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +22,7 @@ function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
   const [sortOrder, setSortOrder] = useState<string | null>(null);
   const navigate = useNavigate();
   const { addToCart } = useCart();
-  // const { bookId, title, author, price } = useParams();
+  const toastRef = useRef(null);
 
   const handleAddToCart = (b: Book) => {
     const newItem: CartItem = {
@@ -26,8 +33,13 @@ function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
       price: Number(b.price),
       subtotal: Number(b.price),
     };
+    const toast = new window.bootstrap.Toast(toastRef.current);
+    toast.show();
+
     addToCart(newItem);
-    navigate('/cart');
+    setTimeout(() => {
+      navigate('/cart');
+    }, 1000);
   };
 
   useEffect(() => {
@@ -172,6 +184,26 @@ function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
           <option value="20">20</option>
         </select>
       </label>
+
+      <div
+        className="toast-container position-fixed bottom-0 end-0 p-3"
+        style={{ zIndex: 9999 }}
+      >
+        <div
+          ref={toastRef}
+          className="toast align-items-center text-bg-primary border-0"
+          role="alert"
+        >
+          <div className="d-flex">
+            <div className="toast-body">Adding to cart...</div>
+            <button
+              type="button"
+              className="btn-close btn-close-white me-2 m-auto"
+              data-bs-dismiss="toast"
+            ></button>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
