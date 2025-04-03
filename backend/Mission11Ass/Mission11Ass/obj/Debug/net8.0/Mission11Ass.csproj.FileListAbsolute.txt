@@ -132,3 +132,4 @@
 /Users/Zac/Documents/IS 413/Mission11Ass/backend/Mission11Ass/Mission11Ass/obj/Debug/net8.0/Mission11Ass.genruntimeconfig.cache
 /Users/Zac/Documents/IS 413/Mission11Ass/backend/Mission11Ass/Mission11Ass/obj/Debug/net8.0/ref/Mission11Ass.dll
 /Users/Zac/Documents/IS 413/Mission11Ass/backend/Mission11Ass/Mission11Ass/obj/Debug/net8.0/Mission11Ass.sourcelink.json
+/Users/Zac/Documents/IS 413/Mission11Ass/backend/Mission11Ass/Mission11Ass/bin/Debug/net8.0/Bookstore.sqlite

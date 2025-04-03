@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "undefined/subscriptions/e1ef8865-906f-4136-8e5c-c063a1414dc1/resourceGroups/appsvc_windows_eastus/providers/Microsoft.Web/sites/BookStore-Z-Back",
+  "appService.deploySubpath": "backend/Mission11Ass/Mission11Ass/publish"
+}
