@@ -30,6 +30,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.Use(async (context, next) =>
+{
+    var origin = context.Request.Headers["Origin"].ToString();
+    Console.WriteLine($"🌐 Origin: {origin}");
+    await next();
+});
 
 app.UseCors("AllowReactAppBook");
 
