@@ -17,7 +17,7 @@ builder.Services.AddDbContext<BookstoreDbContext>(options =>
 builder.Services.AddCors(options =>
     options.AddPolicy("AllowReactAppBook",
         policy => {
-            policy.WithOrigins("http://localhost:3000", "https://bookstore-z-back-fgfgcxcafrhwd0fy.eastus-01.azurewebsites.net/Book")
+            policy.WithOrigins("http://localhost:3000", "https://victorious-sky-0c0d8921e.6.azurestaticapps.net")
                 .AllowAnyMethod()
                 .AllowAnyHeader();
     }));
