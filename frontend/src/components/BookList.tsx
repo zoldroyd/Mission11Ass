@@ -49,7 +49,7 @@ function Booklist({ selectedCategories }: { selectedCategories: string[] }) {
         .join('&');
 
       const response = await fetch(
-        `https://bookstore-z-back-fgfgcxcafrhwd0fy.eastus-01.azurewebsites.net/Book/AllBooks?pageSize=${pageSize}&pageNum=${pageNum}&sortBy=title&sortOrder=${sortOrder || ''}${selectedCategories.length ? `&${categoryParams}` : ''}`
+        `https://book-z-back-gtg3afemctc8hxcs.eastus-01.azurewebsites.net/Book/AllBooks?pageSize=${pageSize}&pageNum=${pageNum}&sortBy=title&sortOrder=${sortOrder || ''}${selectedCategories.length ? `&${categoryParams}` : ''}`
       );
       const data = await response.json();
       console.log('Fetched books:', data.books);

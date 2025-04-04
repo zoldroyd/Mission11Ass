@@ -15,12 +15,17 @@ builder.Services.AddDbContext<BookstoreDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("BookstoreConnection")));
 
 builder.Services.AddCors(options =>
-    options.AddPolicy("AllowReactAppBook",
-        policy => {
-            policy.WithOrigins("http://localhost:3000", "https://victorious-sky-0c0d8921e.6.azurestaticapps.net")
-                .AllowAnyMethod()
-                .AllowAnyHeader();
-    }));
+{
+    options.AddPolicy("AllowFrontend", policy =>
+    {
+        policy.WithOrigins(
+            "http://localhost:3000",
+            "https://victorious-sky-0c0d8921e.6.azurestaticapps.net"
+        )
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+});
 
 var app = builder.Build();
 
@@ -30,14 +35,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.Use(async (context, next) =>
-{
-    var origin = context.Request.Headers["Origin"].ToString();
-    Console.WriteLine($"🌐 Origin: {origin}");
-    await next();
-});
 
-app.UseCors("AllowReactAppBook");
+app.UseCors("AllowFrontend");
 
 app.UseHttpsRedirection();
 
