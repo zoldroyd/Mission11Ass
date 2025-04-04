@@ -133,3 +133,8 @@
 /Users/Zac/Documents/IS 413/Mission11Ass/backend/Mission11Ass/Mission11Ass/obj/Debug/net8.0/ref/Mission11Ass.dll
 /Users/Zac/Documents/IS 413/Mission11Ass/backend/Mission11Ass/Mission11Ass/obj/Debug/net8.0/Mission11Ass.sourcelink.json
 /Users/Zac/Documents/IS 413/Mission11Ass/backend/Mission11Ass/Mission11Ass/bin/Debug/net8.0/Bookstore.sqlite
+/Users/Zac/Documents/IS 413/Mission11Ass/backend/Mission11Ass/Mission11Ass/bin/Debug/net8.0/publish/web.config
+/Users/Zac/Documents/IS 413/Mission11Ass/backend/Mission11Ass/Mission11Ass/bin/Debug/net8.0/publish/appsettings.Development.json
+/Users/Zac/Documents/IS 413/Mission11Ass/backend/Mission11Ass/Mission11Ass/bin/Debug/net8.0/publish/appsettings.json
+/Users/Zac/Documents/IS 413/Mission11Ass/backend/Mission11Ass/Mission11Ass/bin/Debug/net8.0/publish/Mission11Ass.deps.json
+/Users/Zac/Documents/IS 413/Mission11Ass/backend/Mission11Ass/Mission11Ass/bin/Debug/net8.0/publish/Mission11Ass.runtimeconfig.json
